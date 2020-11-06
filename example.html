@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>curFormatter Example</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="example-1">
+		Example #1:<br>
+		<input type="text" id="price1" name="price1"><br>
+		Formatted Price: <span id="formatted_price1"></span>
+	</div>
+	<br>
+	<div id="example-2">
+		Example #2:<br>
+		<input type="text" id="price2" name="price2"><br>
+	</div>
+	<br>
+	<div id="example-3">
+		Example #3:<br>
+		<input type="hidden" id="price3" name="price3">
+		<input type="text" id="formatted_price3" name="formatted_price3"><br>
+	</div>
+	
+<script src="curFormatter.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	// initialize
+	let formatter = new curFormatter();
+
+	// Example #1
+	let price1 = document.getElementById('price1');
+	price1.addEventListener('keyup', function(e) {
+	    let formatted_price = formatter.formatRupiah(price1.value, 'Rp ');
+	    document.getElementById('formatted_price1').innerHTML = formatted_price;
+	});
+
+	// Example #2
+	formatter.input('#price2', 'Rp ');
+
+	// Example #3
+	formatter.input('#formatted_price3', 'Rp ', '#price3')
+});
+</script>
+</body>
+</html>
